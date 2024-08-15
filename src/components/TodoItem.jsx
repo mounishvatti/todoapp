@@ -1,5 +1,8 @@
 import { useTodoContext } from "../contexts/TodoContext";
 import React, { useState } from "react";
+import { GrEdit } from "react-icons/gr";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FiSave } from "react-icons/fi";
 
 function TodoItem({ todo }) {
 
@@ -20,7 +23,7 @@ function TodoItem({ todo }) {
   return (
     <div
       className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300  text-black ${
-        todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
+        todo.completed ? "bg-[#d1e8bd]" : "bg-[#c7c1cb]"
       }`}
     >
       <input
@@ -31,8 +34,8 @@ function TodoItem({ todo }) {
       />
       <input
         type="text"
-        className={`border outline-none w-full bg-transparent rounded-lg ${
-          isTodoEditable ? "border-black/10 px-2" : "border-transparent"
+        className={`outline-none w-full bg-transparent rounded-lg ${
+          isTodoEditable ? "px-2" : "border-transparent"
         } ${todo.completed ? "line-through" : ""}`}
         value={todoMsg}
         onChange={(e) => setTodoMsg(e.target.value)}
@@ -40,7 +43,7 @@ function TodoItem({ todo }) {
       />
       {/* Edit, Save Button */}
       <button
-        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0 disabled:opacity-50"
+        className="inline-flex w-8 h-8 rounded-lg text-sm text-white border border-black/10 justify-center items-center bg-green-600 hover:bg-green-700 shrink-0 disabled:opacity-50"
         onClick={() => {
           if (todo.completed) return;
 
@@ -50,14 +53,14 @@ function TodoItem({ todo }) {
         }}
         disabled={todo.completed}
       >
-        {isTodoEditable ? "📁" : "✏️"}
+        {isTodoEditable ? <FiSave /> : <GrEdit />}
       </button>
       {/* Delete Todo Button */}
       <button
-        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
+        className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-red-500 text-white hover:bg-red-700 shrink-0"
         onClick={() => deleteTodo(todo.id)}
       >
-        ❌
+        <RiDeleteBin6Line />
       </button>
     </div>
   );
