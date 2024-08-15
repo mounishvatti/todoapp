@@ -6,16 +6,16 @@ export const TodoContext = createContext({
       id: 1,
       todo: "Learn React",
       completed: false,
-    },
+    }
   ],
   addTodo: (todo) => {},
   updateTodo: (id, todo) => {},
   deleteTodo: (id) => {},
-  toggleComplete: (id) => {},
-});
+  toggleComplete: (id) => {}
+})
 
 export const useTodoContext = () => {
-  return useContext(TodoContext);
-};
+  return useContext(TodoContext)
+}
 
 export const TodoProvider = TodoContext.Provider;
